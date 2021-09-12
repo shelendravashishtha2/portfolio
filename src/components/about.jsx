@@ -3,7 +3,7 @@ import "../css/about.css"
 let About = () => {
   return (
     <>
-      <div className="about">
+      <div id="about" className="about">
         <div className="intro-image">
           <img src="WhatsApp_Image_2021-07-31_at_7.54.10_PM-removebg-preview.png" />
         </div>

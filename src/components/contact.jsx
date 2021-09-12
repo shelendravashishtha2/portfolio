@@ -3,7 +3,7 @@ import "../css/contact.css";
 const Contact = () => {
   return (
     <>
-      <div className="contacts">
+      <div id="contact" className="contacts">
         <h1>Contact Me</h1>
         <div className="container">
           <div className="contact-container">
@@ -21,7 +21,7 @@ const Contact = () => {
               href="https://www.linkedin.com/in/shelendra-vashishtha-246169184/"
               target="_blank"
             >
-              <span class="material-icons">south_america</span>
+              <span className="material-icons">south_america</span>
             </a>
           </div>
         </div>

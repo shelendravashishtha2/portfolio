@@ -17,16 +17,17 @@ const App = () => {
     const script = document.createElement("script");
     const script1 = document.createElement("script");
     const script2 = document.createElement("script");
-    script.src = "script.js";
     script1.src = "particles.js";
     script2.src = "app.js";
-
+    script.src = "script.js";
+    
     script1.async = false;
     script2.async = false;
     script.async = false;
+    
+    document.body.appendChild(script);
     document.body.appendChild(script1);
     document.body.appendChild(script2);
-    document.body.appendChild(script);
 
     dispatch(fetchProjects());
   }, []);

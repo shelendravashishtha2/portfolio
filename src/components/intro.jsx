@@ -2,7 +2,7 @@ import "../css/intro.css";
 
 const Intro = () => {
   return (
-    <div className="intro">
+    <div id="intro" className="intro">
       <div id="particles-js"></div>
       <div className="content">
         <div className="p1">Hey! I Am</div>

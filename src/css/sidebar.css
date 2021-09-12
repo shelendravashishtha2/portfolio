@@ -16,6 +16,11 @@
   transition: all 300ms ease-in;
 }
 
+.occur{
+  color: var(--primary-color) !important;
+  transform: translateX(10px);
+}
+
 .sidebar-links li:hover {
   transform: translateX(10px);
 }

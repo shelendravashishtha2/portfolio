@@ -1,25 +1,49 @@
-import "../css/navbar.css"
+import "../css/navbar.css";
 
 const Navbar = () => {
   return (
     <>
-      <div className="nav">
+      <div id="nav" className="nav">
         <div className="name">Shelendra</div>
         <div className="links">
           <div className="link">
-            <a>Home</a>
+            <a
+              onClick={() => document.querySelector("#intro").scrollIntoView()}
+            >
+              Home
+            </a>
           </div>
           <div className="link">
-            <a>About</a>
+            <a
+              onClick={() => document.querySelector("#about").scrollIntoView()}
+            >
+              About
+            </a>
           </div>
           <div className="link">
-            <a>Resume</a>
+            <a
+              onClick={() => document.querySelector("#resume").scrollIntoView()}
+            >
+              Resume
+            </a>
           </div>
           <div className="link">
-            <a>Project</a>
+            <a
+              onClick={() =>
+                document.querySelector("#projects").scrollIntoView()
+              }
+            >
+              Project
+            </a>
           </div>
           <div className="link">
-            <a>Contact</a>
+            <a
+              onClick={() =>
+                document.querySelector("#contact").scrollIntoView()
+              }
+            >
+              Contact
+            </a>
           </div>
         </div>
         <div className="burger">
@@ -28,19 +52,33 @@ const Navbar = () => {
       </div>
       <div className="nav-links">
         <div className="nav-link">
-          <a>Home</a>
+          <a onClick={() => document.querySelector("#intro").scrollIntoView()}>
+            Home
+          </a>
         </div>
         <div className="nav-link">
-          <a>About</a>
+          <a onClick={() => document.querySelector("#about").scrollIntoView()}>
+            About
+          </a>
         </div>
         <div className="nav-link">
-          <a>Resume</a>
+          <a onClick={() => document.querySelector("#education").scrollIntoView()}>
+            Resume
+          </a>
         </div>
         <div className="nav-link">
-          <a>Project</a>
+          <a
+            onClick={() => document.querySelector("#projects").scrollIntoView()}
+          >
+            Project
+          </a>
         </div>
         <div className="nav-link">
-          <a>Contact</a>
+          <a
+            onClick={() => document.querySelector("#contact").scrollIntoView()}
+          >
+            Contact
+          </a>
         </div>
       </div>
     </>

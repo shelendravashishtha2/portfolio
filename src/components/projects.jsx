@@ -5,7 +5,7 @@ let Projects = () => {
   let projects = useSelector((state) => state.data);
   return (
     <>
-      <div className="projects">
+      <div id="projects" className="projects">
         <div className="projects-heading">
           <h1>Projects</h1>
         </div>

@@ -7,7 +7,7 @@ import Awards from "./awards";
 const Resume = () => {
   return (
     <>
-      <div className="resume">
+      <div id="resume" className="resume">
         <SideBar />
         <div className="resume-content">
           <Education />

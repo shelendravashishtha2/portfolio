@@ -2,6 +2,7 @@ let ProjectsCard = (props) => {
   return (
     <>
       <div className="card">
+        <div className="inner-style-cont"></div>
         <div className="icon">
           <span className="material-icons">{props.data.icon}</span>
         </div>
