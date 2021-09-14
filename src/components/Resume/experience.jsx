@@ -12,7 +12,7 @@ let Experience = () => {
             name: "Binarydots Technology Pvt. Ltd.",
             role: "Mobile Application Developer Intern",
             list: [
-              `Developed Mobile Application user interface called for
+              `Developed Mobile Application user interface for
                 application called Fretbox`,
               `API Integration with User Interface`,
             ],

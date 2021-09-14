@@ -33,7 +33,7 @@ let About = () => {
             </div>
           </div>
           <div className="download-button">
-            <a type="download" href="/Resume.pdf" target="_blank">
+            <a type="download" href="Resume.pdf" target="_blank">
               Download
             </a>
           </div>
