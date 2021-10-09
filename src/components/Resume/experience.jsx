@@ -1,39 +1,19 @@
+import { useSelector } from "react-redux";
 import ExperienceContainer from "./experience-container";
 import Skills from "./skills";
 
 let Experience = () => {
+  let experience = useSelector((state) => state.experience.data);
+  console.log(experience);
   return (
     <>
       <div id="experience" className="experience">
         <h1>Experience</h1>
-        <ExperienceContainer
-          data={{
-            icon: "work",
-            name: "Binarydots Technology Pvt. Ltd.",
-            role: "Mobile Application Developer Intern",
-            list: [
-              `Developed Mobile Application user interface for
-                application called Fretbox`,
-              `API Integration with User Interface`,
-            ],
-            duration: "December 2020 - Janaury2021",
-          }}
-        />
-        <ExperienceContainer
-          data={{
-            icon: "work",
-            name: "Freelancer",
-            role: "Mobile Application Developer And Django Developer",
-            list: [
-              `Developed Mobile Application user interface`,
-              `Developed Application Interface for In-App Integration In
-                  Django`,
-              `API Integration with User Interface`,
-            ],
-            duration: "December 2020-2021",
-          }}
-        />
-       
+        {experience
+          ? experience.experience.map((data, idx) => (
+              <ExperienceContainer data={data} key={idx} />
+            ))
+          : ""}
       </div>
     </>
   );

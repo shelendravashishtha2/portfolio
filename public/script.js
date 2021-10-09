@@ -63,7 +63,6 @@ let observeConfig = {
 };
 
 let myObserver = new IntersectionObserver((elements) => {
-  console.log(elements[0].intersectionRatio);
   if (elements[0].intersectionRatio >= 0.5) {
     console.log("more than half");
   } else {
@@ -74,9 +73,9 @@ let myObserver = new IntersectionObserver((elements) => {
 myObserver.observe(document.querySelector("#resume"));
 
 document.addEventListener("scroll", function () {
-  console.log(window.pageYOffset);
+ 
   if (window.pageYOffset > 380 && window.pageYOffset < 1150) {
-    console.log(navBar[1]);
+  
     navBar[1].classList.add("navCurr");
     navBar[2].classList.remove("navCurr");
   } else if (window.pageYOffset > 1150 && window.pageYOffset < 3030) {
@@ -127,7 +126,7 @@ document.addEventListener("scroll", function () {
   ) {
     sideNav[2].classList.remove("occur");
     sideNav[3].classList.add("occur");
-    console.log(sideNav[3].classList);
+    
   } else {
     sideNav[3].classList.remove("occur");
   }

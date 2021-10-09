@@ -1,4 +1,8 @@
+import { useSelector } from "react-redux";
+
 let Awards = () => {
+  let awards = useSelector((state) => state.awards.data);
+  console.log(awards);
   return (
     <>
       <div className="awards">
@@ -7,14 +11,9 @@ let Awards = () => {
           <div className="container-content">
             <div className="inner-awards-container">
               <ul>
-                <li>
-                  Secured 3rd position in yearly college Tech-Fest in Web
-                  Development.
-                </li>
-                <li>
-                  Secured 2nd position in yearly college Tech-Fest in Blind
-                  Coding.
-                </li>
+                {awards
+                  ? awards.awards.map((data, idx) => <li key={idx}>{data}</li>)
+                  : ""}
               </ul>
             </div>
           </div>
