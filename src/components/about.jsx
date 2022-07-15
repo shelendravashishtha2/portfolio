@@ -1,11 +1,11 @@
-import "../css/about.css"
+import "../css/about.css";
 
 let About = () => {
   return (
     <>
       <div id="about" className="about">
         <div className="intro-image">
-          <img src="WhatsApp_Image_2021-07-31_at_7.54.10_PM-removebg-preview.png" />
+          <img src="profile-img.png" />
         </div>
         <div className="intro-table">
           <div className="about-heading">About Me</div>
