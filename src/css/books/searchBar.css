@@ -1,0 +1,40 @@
+/* HeroTransition.css */
+.hero-container {
+  position: relative;
+}
+
+.hero {
+  background-color: lightblue;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+
+.hero:hover {
+  transform: scale(1.1);
+}
+
+.dialog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: lightcoral;
+  padding: 20px;
+  opacity: 0;
+  transform: scale(0.8);
+  transform-origin: top left;
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.hero-container.dialog-open .dialog {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hero-container.dialog-open .hero {
+  transform: scale(0.8);
+}
+
+.hidden {
+  display: none;
+}

@@ -1,0 +1,44 @@
+.music1,
+.music3 {
+  height: 20px;
+  width: 4px;
+  margin: 2px;
+  background: var(--primary-color);
+}
+
+.music2 {
+  height: 40px;
+  width: 4px;
+  margin: 2px;
+  background: var(--primary-color);
+  animation: musicAnimeLong 300ms ease-in-out 0s infinite alternate;
+}
+
+.music1,
+.music3 {
+  animation: musicAnimeShort 300ms ease-in-out 0s infinite;
+}
+
+@keyframes musicAnimeLong {
+  0% {
+    height: 25px;
+  }
+  50% {
+    height: 30px;
+  }
+  100% {
+    height: 25px;
+  }
+}
+
+@keyframes musicAnimeShort {
+  0% {
+    height: 10px;
+  }
+  50% {
+    height: 20px;
+  }
+  100% {
+    height: 10px;
+  }
+}

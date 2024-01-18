@@ -1,0 +1,117 @@
+:root {
+  --navbar-color: #191919;
+  --navbar-name-font: "Dancing Script", cursive;
+  --primary-color: #dd9710;
+  --normal-text-font: "Ubuntu", sans-serif;
+  --intro-canvas: #242424;
+  --cursive: "Caveat", cursive;
+  --generalize: "Raleway", sans-serif;
+  --green-color: #6cc0b4;
+}
+
+body {
+  margin: 0;
+  background-color: var(--intro-canvas);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--normal-text-font);
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.projects {
+  position: relative;
+  width: 100%;
+  background: var(--intro-canvas);
+  margin-bottom: 30px;
+}
+
+.projects::after{
+  position: absolute;
+  
+  content: "";
+  bottom: 0;
+  width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;
+  background: var(--primary-color);
+}
+
+@media only screen and (max-width: 768px) {
+  * {
+    overflow-x: clip;
+  }
+
+  .links {
+    display: none;
+  }
+  .burger {
+    display: visible;
+  }
+  .about {
+    position: relative;
+    min-height: 600px;
+    height: fit-content;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+  }
+
+  .about .intro-image {
+    display: none;
+  }
+
+  .about .intro-table {
+    width: 100%;
+    height: fit-content;
+    position: absolute;
+  }
+
+  .intro-table li {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .resume-content {
+    width: 90%;
+  }
+  .container-content .icon span {
+    font-size: 30px;
+    color: var(--primary-color);
+    text-rendering: auto;
+  }
+  .exp-list li {
+    list-style: circle;
+    margin-left: -30px;
+  }
+  .awards ul li::before {
+    
+    margin-left: 0px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .burger {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .p2 {
+    font-size: 50px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .skills div img {
+    height: 30px;
+  }
+}
