@@ -3,7 +3,6 @@ import "../css/projects.css";
 import ProjectsCard from "./projects-card";
 let Projects = () => {
   let projects = useSelector((state) => state.projects.data);
-  console.log(projects);
   return (
     <>
       <div id="projects" className="projects">

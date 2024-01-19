@@ -1,10 +1,8 @@
 import { useSelector } from "react-redux";
 import ExperienceContainer from "./experience-container";
-import Skills from "./skills";
 
 let Experience = () => {
   let experience = useSelector((state) => state.experience.data);
-  console.log(experience);
   return (
     <>
       <div id="experience" className="experience">

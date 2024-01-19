@@ -10,3 +10,6 @@ export const fetchExperienceErr = "FETCH_EXPERIENCE_ERR";
 export const fetchAwardsInit = "FETCH_AWARDS_INIT";
 export const fetchAwardsCompleted = "GOT_AWARDS";
 export const fetchAwardsErr = "FETCH_AWARDS_ERR";
+export const fetchPlaylistInit = "FETCH_PLAYLIST_INIT";
+export const fetchPlaylistCompleted = "FETCH_PLAYLIST_COMPLETED";
+export const fetchPlaylistErr = "FETCH_PLAYLIST_ERR";

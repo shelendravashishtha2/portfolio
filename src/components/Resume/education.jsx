@@ -3,7 +3,6 @@ import EducationContainer from "./education-container";
 
 let Education = () => {
   let education = useSelector((state) => state.education.data);
-  console.log(education);
   return (
     <>
       <div id="education" className="education">

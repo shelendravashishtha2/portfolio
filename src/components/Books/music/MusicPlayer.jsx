@@ -1,29 +1,22 @@
 // CustomMusicPlayer.js
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { usePlayback } from "./playback_context";
 
 const MusicPlayer = ({ playlist }) => {
   const { isPlaying, currentTrackIndex, playPauseToggle, playNextTrack } =
     usePlayback();
   const audioRef = useRef(null);
-  console.log({ isPlaying, currentTrackIndex, playPauseToggle, playNextTrack });
-  //   useEffect(() => {
-  //     const audio = audioRef.current;
-  //     console.log("just after started", isPlaying);
-  //     if (isPlaying) {
-  //       audio.play();
-  //     } else {
-  //       audio.pause();
-  //     }
-  //   }, []);
-
+  const [firstTime, setFirstTime] = useState(true);
   useEffect(() => {
     const audio = audioRef.current;
-    console.log(isPlaying);
-    if (isPlaying) {
-      audio.play();
+    if (!firstTime) {
+      if (isPlaying) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
     } else {
-      audio.pause();
+      setFirstTime(false);
     }
   }, [isPlaying]);
 
@@ -87,19 +80,29 @@ const MusicPlayer = ({ playlist }) => {
               >
                 {music.title}
               </p>
-              <p
+              <div
                 style={{
-                  fontSize: "20px",
-                  maxLines: "1",
-                  height: "30px",
-                  overflow: "hidden",
-                  whiteSpace: "nowrap",
-                  textOverflow: "ellipsis",
-                  color: "#735316",
+                  display: "flex",
+                  alignItems: "center",
                 }}
               >
-                {music.artist}
-              </p>
+                <p
+                  style={{
+                    fontSize: "20px",
+                    maxLines: "1",
+                    height: "30px",
+                    overflow: "hidden",
+                    whiteSpace: "nowrap",
+                    textOverflow: "ellipsis",
+                    color: "#735316",
+                  }}
+                >
+                  {music.artist}
+                </p>
+                {isPlaying && currentTrackIndex === index && (
+                  <img src="music-waves.gif" width="50%" height="30px"></img>
+                )}
+              </div>
             </div>
             <div
               style={{
@@ -121,7 +124,7 @@ const MusicPlayer = ({ playlist }) => {
                   userSelect: "none",
                   cursor: "pointer",
                 }}
-                class="material-symbols-outlined"
+                className="material-symbols-outlined"
               >
                 {currentTrackIndex === index && isPlaying
                   ? "pause"
@@ -131,19 +134,11 @@ const MusicPlayer = ({ playlist }) => {
           </div>
         );
       })}
-      {/* <h3>{playlist[currentTrackIndex].title}</h3> */}
-      <audio
-        ref={audioRef}
-        src={playlist[currentTrackIndex].url}
-        autoPlay={isPlaying}
-      />
-
-      {/* <div>
-        <button onClick={playPauseToggle}>
-          {isPlaying ? "Pause" : "Play"}
-        </button>
-        <button onClick={playNextTrack}>Next</button>
-      </div> */}
+      {!playlist.length ? (
+        <></>
+      ) : (
+        <audio ref={audioRef} src={playlist[currentTrackIndex].url} />
+      )}
     </div>
   );
 };

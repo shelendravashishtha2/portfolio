@@ -5,7 +5,7 @@ let About = () => {
     <>
       <div id="about" className="about">
         <div className="intro-image">
-          <img src="profile-img.png" />
+          <img src="profile-img.png" alt="profileImg" />
         </div>
         <div className="intro-table">
           <div className="about-heading">About Me</div>

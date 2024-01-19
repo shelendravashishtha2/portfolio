@@ -11,12 +11,18 @@
   width: 4px;
   margin: 2px;
   background: var(--primary-color);
-  animation: musicAnimeLong 300ms ease-in-out 0s infinite alternate;
+  animation-duration: 300ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
 }
 
 .music1,
 .music3 {
-  animation: musicAnimeShort 300ms ease-in-out 0s infinite;
+  animation-duration: 300ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
 }
 
 @keyframes musicAnimeLong {

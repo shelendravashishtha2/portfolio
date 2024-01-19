@@ -1,15 +1,46 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import * as React from "react";
-import Button from "@mui/joy/Button";
 import Modal from "@mui/joy/Modal";
-import ModalClose from "@mui/joy/ModalClose";
-import Typography from "@mui/joy/Typography";
-import Sheet from "@mui/joy/Sheet";
 import ModalDialog from "@mui/joy/ModalDialog";
 import MusicPlayer from "./MusicPlayer";
-import { PlaybackProvider } from "./playback_context";
+import CircularProgress from "@mui/material/CircularProgress";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPlaylist } from "../../../redux/book/music/actions";
 
 export const playlist = [
+  {
+    title:
+      "Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary",
+    url: "luminary.mp3",
+    artist: "Joel Sunny",
+  },
+  {
+    title: "Ram Dhun",
+    artist: "Kailash Khair",
+    url: "ramdhun.mp3",
+  },
+  {
+    title:
+      "Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary",
+    url: "luminary.mp3",
+    artist: "Joel Sunny",
+  },
+  {
+    title: "Ram Dhun",
+    artist: "Kailash Khair",
+    url: "ramdhun.mp3",
+  },
+  {
+    title:
+      "Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary",
+    url: "luminary.mp3",
+    artist: "Joel Sunny",
+  },
+  {
+    title: "Ram Dhun",
+    artist: "Kailash Khair",
+    url: "ramdhun.mp3",
+  },
   {
     title:
       "Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary",
@@ -27,6 +58,11 @@ export const playlist = [
 
 const MusicDialog = ({ isOpen, onClose }) => {
   const cancelRef = useRef();
+  const dispatch = useDispatch();
+  const playList = useSelector((state) => state.playlist);
+  useEffect(() => {
+    dispatch(fetchPlaylist());
+  }, []);
 
   return (
     <>
@@ -37,6 +73,7 @@ const MusicDialog = ({ isOpen, onClose }) => {
             background: "var(--intro-canvas)",
             minHeight: "300px",
             maxHeight: "70%",
+            scrollbarWidth: "none",
             overflow: "scroll",
             borderRadius: "30px",
             width: "40%",
@@ -54,7 +91,9 @@ const MusicDialog = ({ isOpen, onClose }) => {
           >
             Music
           </div>
-          <MusicPlayer playlist={playlist} />
+          <MusicPlayer
+            playlist={playList && playList.data ? playList.data : []}
+          />
         </ModalDialog>
       </Modal>
     </>

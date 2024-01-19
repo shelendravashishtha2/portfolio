@@ -9,6 +9,10 @@
   --green-color: #6cc0b4;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   margin: 0;
   background-color: var(--intro-canvas);

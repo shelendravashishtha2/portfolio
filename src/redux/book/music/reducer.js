@@ -1,8 +1,8 @@
 import {
-  fetchEducationErr,
-  fetchExperienceCompleted,
-  fetchExperienceInit,
-} from "../../constants/reduxConstants";
+  fetchPlaylistCompleted,
+  fetchPlaylistErr,
+  fetchPlaylistInit,
+} from "../../../constants/reduxConstants";
 
 let initState = {
   loading: false,
@@ -10,13 +10,13 @@ let initState = {
   data: null,
 };
 
-export const getExperienceReducer = (state = initState, action) => {
+export const getPlaylistReducer = (state = initState, action) => {
   switch (action.type) {
-    case fetchExperienceInit:
+    case fetchPlaylistInit:
       return { ...state, loading: true };
-    case fetchExperienceCompleted:
+    case fetchPlaylistCompleted:
       return { ...state, loading: false, data: action.payload };
-    case fetchEducationErr:
+    case fetchPlaylistErr:
       return { ...state, loading: false, err: action.payload };
     default:
       return state;

@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 
 let Awards = () => {
   let awards = useSelector((state) => state.awards.data);
-  console.log(awards);
   return (
     <>
       <div className="awards">

@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import useCustomMediaQuery from "../../hooks/custom_media_query";
-import MusicDialog from "./music/music_dialog";
 import Music from "./music/music_button";
 
 const SearchBar = () => {

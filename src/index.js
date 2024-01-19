@@ -1,12 +1,10 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
-import { applyMiddleware, createStore } from "redux";
 import { thunk } from "redux-thunk";
 import App from "./App";
 import rootReducer from "./redux/rootReducer";
-import { configureStore, Tuple } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 
 let store = configureStore({
   reducer: rootReducer,

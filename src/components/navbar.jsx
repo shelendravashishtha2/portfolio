@@ -9,7 +9,6 @@ const Navbar = () => {
     if (path !== "/") {
       navigate("/");
       setTimeout(() => {
-        console.log(linkPath);
         let el = document.querySelector(linkPath);
         if (el) {
           document.querySelector(linkPath).scrollIntoView();
