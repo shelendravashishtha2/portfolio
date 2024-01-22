@@ -1,21 +1,21 @@
 import { motion } from "framer-motion";
 import { useEffect } from "react";
-import useCustomMediaQuery from "../../hooks/custom_media_query";
+// import useCustomMediaQuery from "../../hooks/custom_media_query";
 import Music from "./music/music_button";
 
 const SearchBar = () => {
-  const {
-    scrollExtent,
-    windowHeight,
-    windowWidth,
-    isMobile,
-    isTablet,
-    isDesktop,
-  } = useCustomMediaQuery();
+  // const {
+  //   scrollExtent,
+  //   windowHeight,
+  //   windowWidth,
+  //   isMobile,
+  //   isTablet,
+  //   isDesktop,
+  // } = useCustomMediaQuery();
 
-  useEffect(() => {
-    console.log(scrollExtent);
-  }, [scrollExtent]);
+  // useEffect(() => {
+  //   console.log(scrollExtent);
+  // }, [scrollExtent]);
 
   return (
     <>
@@ -24,11 +24,10 @@ const SearchBar = () => {
           width: "100%",
           height: "110px",
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <Music />
         <div
           style={{
             boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
@@ -43,7 +42,7 @@ const SearchBar = () => {
             style={{
               width: "100%",
               height: "70px",
-              background: "rgb(45,44,43)",
+              background: "#1c2128",
               cursor: "text",
               borderRadius: "22px",
               display: "flex",
@@ -72,7 +71,7 @@ const SearchBar = () => {
                 border: "none",
                 fontWeight: "bolder",
                 outline: "none",
-                background: "rgb(45,44,43)",
+                background: "#1c2128",
                 color: "var(--primary-color)",
                 caretColor: "var(--primary-color)",
               }}

@@ -1,18 +1,21 @@
 :root {
-  --navbar-color: #191919;
+  --navbar-color: #22272e;
   --navbar-name-font: "Dancing Script", cursive;
   --primary-color: #dd9710;
   --normal-text-font: "Ubuntu", sans-serif;
-  --intro-canvas: #242424;
+  --intro-canvas: #22272e;
   --cursive: "Caveat", cursive;
   --generalize: "Raleway", sans-serif;
   --green-color: #6cc0b4;
+  --github-green-color: #347d39;
 }
 
 ::-webkit-scrollbar {
   display: none;
 }
-
+iframe {
+  transition: opacity 0.5s ease-in-out;
+}
 body {
   margin: 0;
   background-color: var(--intro-canvas);
@@ -33,9 +36,9 @@ body {
   margin-bottom: 30px;
 }
 
-.projects::after{
+.projects::after {
   position: absolute;
-  
+
   content: "";
   bottom: 0;
   width: 80%;
@@ -97,7 +100,6 @@ body {
     margin-left: -30px;
   }
   .awards ul li::before {
-    
     margin-left: 0px;
   }
 }

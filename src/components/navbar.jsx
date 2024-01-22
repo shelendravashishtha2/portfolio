@@ -1,5 +1,6 @@
 import "../css/navbar.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import Music from "./Books/music/music_button";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -90,6 +91,16 @@ const Navbar = () => {
             Contact
           </span>
         </div>
+      </div>
+      <div
+        className="musicplayer"
+        style={{
+          position: "fixed",
+          left: "5px",
+          zIndex: "99999999",
+        }}
+      >
+        <Music />
       </div>
     </>
   );

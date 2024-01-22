@@ -1,0 +1,23 @@
+.main-read-book-forward-icon {
+  color: white;
+  padding: 8px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items:  center;
+  animation: forwardSideIconAnimation 2s ease 0s infinite forwards;
+}
+
+@keyframes forwardSideIconAnimation {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}

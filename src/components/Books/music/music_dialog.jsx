@@ -7,55 +7,6 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPlaylist } from "../../../redux/book/music/actions";
 
-export const playlist = [
-  {
-    title:
-      "Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary",
-    url: "luminary.mp3",
-    artist: "Joel Sunny",
-  },
-  {
-    title: "Ram Dhun",
-    artist: "Kailash Khair",
-    url: "ramdhun.mp3",
-  },
-  {
-    title:
-      "Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary",
-    url: "luminary.mp3",
-    artist: "Joel Sunny",
-  },
-  {
-    title: "Ram Dhun",
-    artist: "Kailash Khair",
-    url: "ramdhun.mp3",
-  },
-  {
-    title:
-      "Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary",
-    url: "luminary.mp3",
-    artist: "Joel Sunny",
-  },
-  {
-    title: "Ram Dhun",
-    artist: "Kailash Khair",
-    url: "ramdhun.mp3",
-  },
-  {
-    title:
-      "Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary Luminary",
-    url: "luminary.mp3",
-    artist: "Joel Sunny",
-  },
-  {
-    title: "Ram Dhun",
-    artist: "Kailash Khair",
-    url: "ramdhun.mp3",
-  },
-
-  // Add more songs to the playlist as needed
-];
-
 const MusicDialog = ({ isOpen, onClose }) => {
   const cancelRef = useRef();
   const dispatch = useDispatch();
