@@ -1,13 +1,57 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../../../css/books/ReadBook/read-book.css";
-const ReadBookSidebar = ({ changeColor }) => {
+import "../../../css/books/ReadBook/sidebar.css";
+import SetSidebarColor from "./set_sidebar_color";
+import SetSidebarBackground from "./set_background";
+import SetSidebarFontSize from "./set_font_size";
+import SetSidebarTextAlign from "./set_text_align";
+const ReadBookSidebar = ({ changeEpubConfig }) => {
   const [open, setOpen] = useState(false);
-  const [color, setColor] = useState("#fff");
-  const setTextColor = (el) => {
-    console.log(el.target.value);
-    setColor(el.target.value);
-    changeColor(el.target.value);
+  const [config, setConfig] = useState({
+    color: "#ffffff",
+    background: "#ffffff",
+    textAlign: "justify",
+    font: "Roboto",
+    fontSize: "12px",
+    lineHeight: 1.1,
+  });
+
+  useEffect(() => {
+    let configMap = localStorage.getItem("epubState");
+    if (configMap) {
+      setConfig(JSON.parse(configMap));
+    }
+  }, []);
+
+  const setEpubConfig = ({
+    color,
+    background,
+    textAlign,
+    font,
+    fontSize,
+    lineHeight,
+  }) => {
+    console.log(config);
+    setConfig({
+      color: color,
+      background: background,
+      textAlign: textAlign,
+      font,
+      fontSize,
+      lineHeight,
+    });
+    console.log(config);
+
+    changeEpubConfig({
+      color,
+      background,
+      textAlign,
+      font,
+      fontSize,
+      lineHeight,
+    });
   };
+
   const handleOpen = () => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -16,11 +60,10 @@ const ReadBookSidebar = ({ changeColor }) => {
       <div
         style={{
           width: "fit-content",
-          position: "absolute",
-          height: "100%",
+          position: "fixed",
+          height: "calc(100% - 60px)",
           display: "flex",
-          top: 0,
-          marginTop: "60px",
+          top: "60px",
         }}
       >
         <div
@@ -43,32 +86,34 @@ const ReadBookSidebar = ({ changeColor }) => {
               zIndex: "2",
               overflowY: "scroll",
               padding: "8px",
+              position: "relative",
             }}
             className="main-read-book-sidebar"
           >
-            <div
+            <span
+              onClick={handleOpen}
               style={{
-                width: "100%",
-                color: "white",
-                height: "60px",
+                width: "fit-content",
+                color: "#adbac7",
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+                background: "transparent",
               }}
-              className="main-read-book-sidebar-link"
+              className="material-symbols-outlined clear"
             >
-              <span
-                onClick={handleOpen}
-                style={{
-                  padding: "10px",
-                  width: "100%",
-                  display: "flex",
-                  justifyContent: "end",
-                  cursor: "pointer",
-                }}
-                className="material-symbols-outlined"
-              >
-                clear
-              </span>
-            </div>
-            <input type="color" value={color} onChange={setTextColor} />
+              clear
+            </span>
+            <SetSidebarColor setEpubConfig={setEpubConfig} config={config} />
+            <SetSidebarBackground
+              setEpubConfig={setEpubConfig}
+              config={config}
+            />
+            <SetSidebarFontSize setEpubConfig={setEpubConfig} config={config} />
+            <SetSidebarTextAlign
+              setEpubConfig={setEpubConfig}
+              config={config}
+            />
           </div>
         </div>
         <div
@@ -77,19 +122,18 @@ const ReadBookSidebar = ({ changeColor }) => {
             display: "flex",
             transition: "300ms",
             alignItems: "center",
-            background: open ? "var(--intro-canvas)" : "transparent",
           }}
           className="main-read-book-icons"
         >
           <span
             style={{
               transition: "300ms",
-              background: open ? "transparent" : "var(--github-green-color)",
+              background: "var(--github-green-color)",
             }}
             onClick={handleOpen}
             className="material-symbols-outlined main-read-book-forward-icon"
           >
-            {open ? "arrow_back_ios" : "arrow_forward_ios"}
+            {open ? "arrow_back" : "arrow_forward_ios"}
           </span>
         </div>
       </div>

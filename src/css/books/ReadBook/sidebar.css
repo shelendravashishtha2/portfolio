@@ -1,0 +1,32 @@
+.main-read-book-sidebar-link {
+  width: 100%;
+  color: #adbac7;
+  transition: 500ms;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.main-read-book-sidebar-link.first {
+  margin-top: 40px;
+}
+
+.main-read-book-sidebar-link .text-align {
+  padding: 5px;
+  transition:  300ms;
+}
+
+.main-read-book-sidebar-link .selected-text-align {
+  background: var(--github-green-color);
+  border-radius: 5px;
+}
+
+.main-read-book-sidebar-link:hover {
+  background: #333b45;
+}
+
+.main-read-book-sidebar-link .clear:hover {
+  background: transparent;
+}

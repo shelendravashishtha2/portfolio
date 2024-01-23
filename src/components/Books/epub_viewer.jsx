@@ -11,8 +11,25 @@ const EpubViewer = ({ epubUrl, onChapterChange }) => {
   const [loading, setLoading] = useState(false);
   const [length, setLength] = useState(0);
   const [pages, setPages] = useState([]);
-  const mainTainLocalStorage = ({ color, textAlign }) => {
-    localStorage.setItem("epubState", JSON.stringify({ color, textAlign }));
+  const mainTainLocalStorage = ({
+    color,
+    textAlign,
+    font,
+    background,
+    fontSize,
+    lineHeight,
+  }) => {
+    localStorage.setItem(
+      "epubState",
+      JSON.stringify({
+        color,
+        textAlign,
+        font,
+        background,
+        fontSize,
+        lineHeight,
+      })
+    );
   };
   const getLocalStorageItem = () => {
     return JSON.parse(localStorage.getItem("epubState"));
@@ -31,14 +48,13 @@ const EpubViewer = ({ epubUrl, onChapterChange }) => {
         });
 
         rendition.display();
-        rendition.views();
 
         setBook(rendition);
         getAllPages(rendition);
         rendition.on("relocated", (location) => {
           console.log(location);
           onChapterChange(location.start.index);
-          changeColor("#ffffff", true);
+          changeEpubConfig({ color: "#ffffff" }, true);
         });
         cleanupFunc = () => {
           console.log(rendition);
@@ -90,20 +106,47 @@ const EpubViewer = ({ epubUrl, onChapterChange }) => {
       book.prev();
     }
   };
-  const changeColor = (value, isFromCallback = false) => {
-    console.log("color", value);
-    let color = value;
+  const changeEpubConfig = (
+    { color, textAlign, font, background, fontSize, lineHeight },
+    isFromCallback = false
+  ) => {
+    console.log("color");
+    let colorVal = color;
+    let textAlignVal = textAlign;
+    let fontVal = font;
+    let backgroundVal = background;
+    let fontSizeVal = fontSize;
+    let lineHeightVal = lineHeight;
     if (isFromCallback) {
       let localStorageItems = getLocalStorageItem();
-      if (localStorageItems) color = localStorageItems.color;
+      if (localStorageItems) {
+        colorVal = localStorageItems.color;
+        textAlignVal = localStorageItems.textAlign;
+        fontVal = localStorageItems.font;
+        backgroundVal = localStorageItems.background;
+        fontSizeVal = localStorageItems.fontSize;
+        lineHeightVal = localStorage.lineHeight;
+      }
     }
-    console.log("color", color, "isFromCallback", isFromCallback);
+    console.log("color", colorVal, "isFromCallback", isFromCallback);
     const iframe = document.querySelector(".epub-view iframe");
     const iframeBody = iframe.contentDocument.body;
     if (iframeBody) {
-      iframeBody.style.color = isFromCallback ? color : value;
+      iframeBody.style.color = colorVal;
+      iframeBody.style.textAlign = textAlignVal;
+      iframeBody.style.font = fontVal;
+      iframeBody.style.background = backgroundVal;
+      iframeBody.style.fontSize = fontSizeVal;
+      iframeBody.style.lineHeight = lineHeightVal;
       if (!isFromCallback) {
-        mainTainLocalStorage({ color: value });
+        mainTainLocalStorage({
+          color: colorVal,
+          textAlign,
+          font,
+          background,
+          fontSize,
+          lineHeight,
+        });
       }
     }
     console.log(book);
@@ -192,7 +235,7 @@ const EpubViewer = ({ epubUrl, onChapterChange }) => {
             </button>
           </div>
         </div>
-        <ReadBookSidebar changeColor={changeColor} />
+        <ReadBookSidebar changeEpubConfig={changeEpubConfig} />
       </>
     </>
   );
