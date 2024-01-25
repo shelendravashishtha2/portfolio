@@ -1,16 +1,10 @@
-import {
-  Box,
-  Button,
-  Chip,
-  Modal,
-  ModalDialog,
-  Option,
-  Select,
-} from "@mui/joy";
+import { Box, Button, Chip, Modal, ModalDialog } from "@mui/joy";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 
 import "../../../css/books/submit-book/submit-book-dialog.css";
-import { SvgIcon } from "@mui/joy";
-import { styled } from "@mui/joy";
+import { SvgIcon } from "@mui/material";
+import { styled } from "@mui/material";
 import { useState } from "react";
 
 const VisuallyHiddenInput = styled("input")`
@@ -65,11 +59,28 @@ const SubmitBookDialog = ({ isOpen, onClose }) => {
     },
   });
 
-    const onValueChange = (e) => {
+  const onValueChange = (e, name) => {
+    const targetName = e.target.name;
+    let setConfig = { ...formConfig };
+
+    if (targetName) {
+      setConfig[targetName] = {
+        error: "",
+        value: e.target.type != "file" ? e.target.value : e.target.files[0],
+      };
+    } else {
+      console.log(e.target.value);
+      setConfig[name] = {
+        error: "",
+        value: e.target.type != "file" ? e.target.value : e.target.files[0],
+      };
+    }
+    setFormConfig(setConfig);
     console.log(e.target.name);
     console.log(e.target.value);
     console.log(e.target.type);
     console.log(e.target.files);
+    console.log(formConfig);
   };
 
   let genres = [
@@ -172,13 +183,12 @@ const SubmitBookDialog = ({ isOpen, onClose }) => {
                 </label>
                 <Select
                   className="book-input-field"
-                  onChange={onValueChange}
-                  name="genre"
+                  onChange={(e) => onValueChange(e, "genre")}
                   value={formConfig.genre.value}
                   multiple
                   renderValue={(selected) => (
                     <Box sx={{ display: "flex", gap: "0.25rem" }}>
-                      {selected.map((selectedOption) => (
+                      {selected.map((selectedMenuItem) => (
                         <Chip
                           variant="soft"
                           style={{
@@ -186,7 +196,10 @@ const SubmitBookDialog = ({ isOpen, onClose }) => {
                           }}
                           color="primary"
                         >
-                          {selectedOption.label}
+                          {
+                            genres.filter((e) => e.id == selectedMenuItem)[0]
+                              .name
+                          }
                         </Chip>
                       ))}
                     </Box>
@@ -204,9 +217,9 @@ const SubmitBookDialog = ({ isOpen, onClose }) => {
                 >
                   {genres.map((genre, index) => {
                     return (
-                      <Option key={index} value={genre.id}>
+                      <MenuItem key={index} value={genre.id}>
                         {genre.name}
-                      </Option>
+                      </MenuItem>
                     );
                   })}
                 </Select>
@@ -214,8 +227,8 @@ const SubmitBookDialog = ({ isOpen, onClose }) => {
               <div className="book-typ-input">
                 <label htmlFor="#link">Buy Link</label>
                 <input
-                                  onChange={ onValueChange }
-                                  value={formConfig.buyLink.value}
+                  onChange={onValueChange}
+                  value={formConfig.buyLink.value}
                   name="buyLink"
                   className="book-input-field"
                   id="link"
@@ -227,7 +240,7 @@ const SubmitBookDialog = ({ isOpen, onClose }) => {
                 component="label"
                 role={undefined}
                 tabIndex={-1}
-                onChange={onValueChange}
+                onChange={(e) => onValueChange(e, "bookCover")}
                 variant="outlined"
                 color="neutral"
                 name="bookCover"
@@ -253,7 +266,13 @@ const SubmitBookDialog = ({ isOpen, onClose }) => {
                 Selected Book Cover
                 <VisuallyHiddenInput type="file" />
               </Button>
-              <p className="file-info">File : "hbhbjbdbchjsdbhcbbsd</p>
+              {formConfig.bookCover.value ? (
+                <p className="file-info">
+                  File : {formConfig.bookCover.value.name}
+                </p>
+              ) : (
+                ""
+              )}
             </div>
             <div className="book-typ-input">
               <Button
@@ -261,7 +280,7 @@ const SubmitBookDialog = ({ isOpen, onClose }) => {
                 role={undefined}
                 tabIndex={-1}
                 variant="outlined"
-                onChange={onValueChange}
+                onChange={(e) => onValueChange(e, "writerPic")}
                 name="writerPic"
                 color="neutral"
                 className="file-upload"
@@ -286,7 +305,13 @@ const SubmitBookDialog = ({ isOpen, onClose }) => {
                 Select Writer Pic
                 <VisuallyHiddenInput type="file" />
               </Button>
-              <p className="file-info">File : "hbhbjbdbchjsdbhcbbsd</p>
+              {formConfig.writerPic.value ? (
+                <p className="file-info">
+                  File : {formConfig.writerPic.value.name}
+                </p>
+              ) : (
+                ""
+              )}
             </div>
             <div className="book-typ-input">
               <Button
@@ -295,7 +320,7 @@ const SubmitBookDialog = ({ isOpen, onClose }) => {
                 tabIndex={-1}
                 variant="outlined"
                 color="neutral"
-                onChange={onValueChange}
+                onChange={(e) => onValueChange(e, "book")}
                 name="book"
                 className="file-upload required"
                 startDecorator={
@@ -319,7 +344,11 @@ const SubmitBookDialog = ({ isOpen, onClose }) => {
                 Select Book [epub file]
                 <VisuallyHiddenInput type="file" />
               </Button>
-              <p className="file-info">File : "hbhbjbdbchjsdbhcbbsd</p>
+              {formConfig.book.value ? (
+                <p className="file-info">File : {formConfig.book.value.name}</p>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </ModalDialog>
