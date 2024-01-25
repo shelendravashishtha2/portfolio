@@ -6,6 +6,7 @@ import "../../css/books/books.css";
 import Tilt from "react-parallax-tilt";
 import BooksContainer from "./books-container";
 import EpubViewer from "./epub_viewer";
+import SubmitBookDialog from "./submit-book/submit-book-dialog";
 // import EpubViewer from "./epub_viewer";
 
 export const srcs = [
@@ -56,7 +57,7 @@ const Books = () => {
     isDesktop,
   } = useCustomMediaQuery();
   const [isTouched, setIsTouched] = useState(false);
-  const clickHandler = () => {};
+  const [isDialogOpened, setIsIsDialogOpened] = useState(true);
   const handleChapterChange = (index) => {
     setCurrentChapter(index);
   };
@@ -64,9 +65,12 @@ const Books = () => {
     setIsTouched((prevVal) => !prevVal);
   };
 
+  const handleDialogToggle = () => {
+    setIsIsDialogOpened((prevVal) => !prevVal);
+  };
+
   return (
     <>
-      {/* <EpubViewer epubUrl={"book.epub"} onChapterChange={() => {}} /> */}
       <SearchBar />
       <div
         className="books-heading"
@@ -119,58 +123,31 @@ const Books = () => {
         {srcs.map((e) => (
           <BooksContainer handleTouch={handleTouch} book={e} />
         ))}
-        {srcs.map((e) => (
-          <BooksContainer handleTouch={handleTouch} book={e} />
-        ))}{" "}
-        {srcs.map((e) => (
-          <BooksContainer handleTouch={handleTouch} book={e} />
-        ))}{" "}
-        {srcs.map((e) => (
-          <BooksContainer handleTouch={handleTouch} book={e} />
-        ))}{" "}
-        {srcs.map((e) => (
-          <BooksContainer handleTouch={handleTouch} book={e} />
-        ))}{" "}
-        {srcs.map((e) => (
-          <BooksContainer handleTouch={handleTouch} book={e} />
-        ))}{" "}
-        {srcs.map((e) => (
-          <BooksContainer handleTouch={handleTouch} book={e} />
-        ))}{" "}
-        {srcs.map((e) => (
-          <BooksContainer handleTouch={handleTouch} book={e} />
-        ))}{" "}
-        {srcs.map((e) => (
-          <BooksContainer handleTouch={handleTouch} book={e} />
-        ))}{" "}
-        {srcs.map((e) => (
-          <BooksContainer handleTouch={handleTouch} book={e} />
-        ))}{" "}
-        {srcs.map((e) => (
-          <BooksContainer handleTouch={handleTouch} book={e} />
-        ))}{" "}
-        {srcs.map((e) => (
-          <BooksContainer handleTouch={handleTouch} book={e} />
-        ))}{" "}
-        {srcs.map((e) => (
-          <BooksContainer handleTouch={handleTouch} book={e} />
-        ))}{" "}
-        {srcs.map((e) => (
-          <BooksContainer handleTouch={handleTouch} book={e} />
-        ))}{" "}
-        {srcs.map((e) => (
-          <BooksContainer handleTouch={handleTouch} book={e} />
-        ))}{" "}
-        {srcs.map((e) => (
-          <BooksContainer handleTouch={handleTouch} book={e} />
-        ))}{" "}
-        {srcs.map((e) => (
-          <BooksContainer handleTouch={handleTouch} book={e} />
-        ))}{" "}
-        {srcs.map((e) => (
-          <BooksContainer handleTouch={handleTouch} book={e} />
-        ))}
       </div>
+      <div
+        className="submit-book"
+        style={{
+          position: "fixed",
+          height: "50px",
+          width: "50px",
+          background: "var(--primary-color)",
+          bottom: "10px",
+          right: "10px",
+          borderRadius: "50%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          userSelect: "none",
+          cursor: "pointer",
+        }}
+        onClick={handleDialogToggle}
+      >
+        <span class="material-symbols-outlined">add_notes</span>
+      </div>
+      <SubmitBookDialog
+        isOpen={isDialogOpened}
+        onClose={handleDialogToggle}
+      ></SubmitBookDialog>
     </>
   );
 };
