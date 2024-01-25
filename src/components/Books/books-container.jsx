@@ -79,7 +79,7 @@ const BooksContainer = ({ handleTouch, book }) => {
             className="bottom-container"
           >
             View Details
-            <span class="material-symbols-outlined">navigate_next</span>
+            <span className="material-symbols-outlined">navigate_next</span>
           </div>
         </div>
       </Tilt>

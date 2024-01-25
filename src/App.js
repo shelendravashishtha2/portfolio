@@ -26,10 +26,10 @@ const App = () => {
   } = useCustomMediaQuery();
 
   useEffect(() => {
-    dispatch(fetchProjects());
-    dispatch(fetchEducation());
-    dispatch(fetchAwards());
-    dispatch(fetchExperience());
+    // dispatch(fetchProjects());
+    // dispatch(fetchEducation());
+    // dispatch(fetchAwards());
+    // dispatch(fetchExperience());
   }, []);
   return (
     <>

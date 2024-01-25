@@ -22,9 +22,10 @@ export const fetchEducation = () => {
     dispatch(fetchEducationCreator());
     firestore
       .collection("education")
-      .doc("LPVBDVv7OvxN5PXNOVJ8")
+      .doc("FUyPke5WyEu7QfM9DABI")
       .get()
       .then((data) => {
+        console.log(data.data());
         dispatch(getEducationCreator(data.data()));
       })
       .catch((err) => getEducationErrCreator(err));

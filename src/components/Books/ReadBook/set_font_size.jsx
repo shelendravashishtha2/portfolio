@@ -27,8 +27,8 @@ const SetSidebarFontSize = ({ setEpubConfig, config }) => {
             }}
             onChange={handleChange}
           >
-            {fontSizeList.map((e) => {
-              return <option value={e + "px"}>{e}</option>;
+            {fontSizeList.map((e, idx) => {
+              return <option key={idx} value={e + "px"}>{e}</option>;
             })}
           </select>
         </div>

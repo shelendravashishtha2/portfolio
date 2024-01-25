@@ -100,7 +100,7 @@ const MusicPlayer = ({ playlist }) => {
                   {music.artist}
                 </p>
                 {isPlaying && currentTrackIndex === index && (
-                  <img src="music-waves.gif" width="50%" height="30px"></img>
+                  <img src="/music-waves.gif" width="50%" height="30px"></img>
                 )}
               </div>
             </div>

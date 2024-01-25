@@ -1,6 +1,6 @@
 // components/EpubViewer.js
 import React, { useEffect, useRef, useState } from "react";
-import ePub from "epubjs"; // Specify the version
+import ePub, { Book } from "epubjs"; // Specify the version
 import { Slider } from "@mui/material";
 import ReadBookSidebar from "./ReadBook/sidebar";
 
@@ -39,7 +39,10 @@ const EpubViewer = ({ epubUrl, onChapterChange }) => {
     const loadBook = async () => {
       setLoading(true);
       try {
+        console.log(epubUrl);
+
         const loadedBook = ePub(epubUrl);
+        
         //   setBook(loadedBook);
         const rendition = loadedBook.renderTo("viewer", {
           width: "100%",
@@ -107,13 +110,12 @@ const EpubViewer = ({ epubUrl, onChapterChange }) => {
     }
   };
   const changeEpubConfig = (
-    { color, textAlign, font, background, fontSize, lineHeight },
+    { color, textAlign, background, fontSize, lineHeight },
     isFromCallback = false
   ) => {
     console.log("color");
     let colorVal = color;
     let textAlignVal = textAlign;
-    let fontVal = font;
     let backgroundVal = background;
     let fontSizeVal = fontSize;
     let lineHeightVal = lineHeight;
@@ -122,7 +124,6 @@ const EpubViewer = ({ epubUrl, onChapterChange }) => {
       if (localStorageItems) {
         colorVal = localStorageItems.color;
         textAlignVal = localStorageItems.textAlign;
-        fontVal = localStorageItems.font;
         backgroundVal = localStorageItems.background;
         fontSizeVal = localStorageItems.fontSize;
         lineHeightVal = localStorage.lineHeight;
@@ -134,7 +135,6 @@ const EpubViewer = ({ epubUrl, onChapterChange }) => {
     if (iframeBody) {
       iframeBody.style.color = colorVal;
       iframeBody.style.textAlign = textAlignVal;
-      iframeBody.style.font = fontVal;
       iframeBody.style.background = backgroundVal;
       iframeBody.style.fontSize = fontSizeVal;
       iframeBody.style.lineHeight = lineHeightVal;
@@ -142,7 +142,6 @@ const EpubViewer = ({ epubUrl, onChapterChange }) => {
         mainTainLocalStorage({
           color: colorVal,
           textAlign,
-          font,
           background,
           fontSize,
           lineHeight,

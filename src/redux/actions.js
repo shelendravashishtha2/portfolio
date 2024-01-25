@@ -24,13 +24,12 @@ export const fetchProjects = () => {
     dispatch(getProjectInitCreator());
     firestore
       .collection("projects")
-      .doc("IVP4y0GWRmWWWOCD5XNo")
+      .doc("XQNTzp4B0SHvVGcC0BeV")
       .get()
       .then((data) => {
         dispatch(getProjectFetchCreator(data.data()));
       })
       .catch((error) => {
-          
         dispatch(getProjectErrCreator(error));
       });
   };

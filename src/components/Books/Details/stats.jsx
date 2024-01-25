@@ -24,7 +24,7 @@ const BookContainerStats = ({ icon, heading, statValue }) => {
             style={{
               fontSize: "2.5rem",
             }}
-            class="material-symbols-outlined"
+            className="material-symbols-outlined"
           >
             {icon}
           </span>

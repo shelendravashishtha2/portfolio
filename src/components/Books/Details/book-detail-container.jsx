@@ -125,7 +125,7 @@ const BookDetailContainer = ({ book }) => {
                       style={{
                         marginRight: "3px",
                       }}
-                      class="material-symbols-outlined"
+                      className="material-symbols-outlined"
                     >
                       token
                     </span>{" "}

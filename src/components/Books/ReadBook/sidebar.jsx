@@ -5,15 +5,15 @@ import SetSidebarColor from "./set_sidebar_color";
 import SetSidebarBackground from "./set_background";
 import SetSidebarFontSize from "./set_font_size";
 import SetSidebarTextAlign from "./set_text_align";
+import SetSidebarLineHeight from "./set_line_height";
 const ReadBookSidebar = ({ changeEpubConfig }) => {
   const [open, setOpen] = useState(false);
   const [config, setConfig] = useState({
     color: "#ffffff",
     background: "#ffffff",
     textAlign: "justify",
-    font: "Roboto",
     fontSize: "12px",
-    lineHeight: 1.1,
+    lineHeight: "1em",
   });
 
   useEffect(() => {
@@ -27,7 +27,6 @@ const ReadBookSidebar = ({ changeEpubConfig }) => {
     color,
     background,
     textAlign,
-    font,
     fontSize,
     lineHeight,
   }) => {
@@ -36,7 +35,6 @@ const ReadBookSidebar = ({ changeEpubConfig }) => {
       color: color,
       background: background,
       textAlign: textAlign,
-      font,
       fontSize,
       lineHeight,
     });
@@ -46,7 +44,6 @@ const ReadBookSidebar = ({ changeEpubConfig }) => {
       color,
       background,
       textAlign,
-      font,
       fontSize,
       lineHeight,
     });
@@ -111,6 +108,10 @@ const ReadBookSidebar = ({ changeEpubConfig }) => {
             />
             <SetSidebarFontSize setEpubConfig={setEpubConfig} config={config} />
             <SetSidebarTextAlign
+              setEpubConfig={setEpubConfig}
+              config={config}
+            />
+            <SetSidebarLineHeight
               setEpubConfig={setEpubConfig}
               config={config}
             />

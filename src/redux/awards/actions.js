@@ -22,7 +22,7 @@ export const fetchAwards = () => {
     dispatch(fetchAwardsCreator());
     firestore
       .collection("awards")
-      .doc("RGzomrDighJZV9ZIExCm")
+      .doc("aEaFtjVuafEjXeqipx8N")
       .get()
       .then((data) => {
         dispatch(getAwardsCreator(data.data()));

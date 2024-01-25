@@ -22,7 +22,7 @@ export const fetchExperience = () => {
     dispatch(fetchExperienceCreator());
     firestore
       .collection("experience")
-      .doc("pM8ijBr2PTpEC3dc6o4e")
+      .doc("G1XRr0BliYUKTwI9o3YP")
       .get()
       .then((data) => {
         dispatch(getExperienceCreator(data.data()));

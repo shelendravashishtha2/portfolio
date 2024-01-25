@@ -27,7 +27,7 @@ const Music = () => {
       >
         <div>
           <img
-            src={!isPlaying ? "music.svg" : "music.gif"}
+            src={!isPlaying ? "/music.svg" : "/music.gif"}
             alt=""
             height="100%"
             width="100%"
