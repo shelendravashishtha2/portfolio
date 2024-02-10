@@ -13,3 +13,7 @@ export const fetchAwardsErr = "FETCH_AWARDS_ERR";
 export const fetchPlaylistInit = "FETCH_PLAYLIST_INIT";
 export const fetchPlaylistCompleted = "FETCH_PLAYLIST_COMPLETED";
 export const fetchPlaylistErr = "FETCH_PLAYLIST_ERR";
+
+export const fetchBooksInit = "FETCH_BOOK_INIT";
+export const fetchBooksCompleted = "FETCH_BOOK_COMPLETED";
+export const fetchBooksErr = "FETCH_BOOK_ERR";

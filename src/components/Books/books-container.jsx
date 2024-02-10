@@ -6,7 +6,6 @@ import { useEffect } from "react";
 
 const BooksContainer = ({ handleTouch, book }) => {
   const navigate = useNavigate();
-  console.log(book);
   useEffect(() => {
     AOS.init();
   }, []);
@@ -30,7 +29,7 @@ const BooksContainer = ({ handleTouch, book }) => {
               gyroscope={true}
             >
               <img
-                src={book.src}
+                src={book.bookCover}
                 height="200px"
                 width="200px"
                 style={{
@@ -69,7 +68,7 @@ const BooksContainer = ({ handleTouch, book }) => {
                 whiteSpace: "nowrap",
               }}
             >
-              {book.author}
+              {book.writerName}
             </p>
           </div>
           <div

@@ -13,6 +13,8 @@ import { PlaybackProvider } from "./components/Books/music/playback_context";
 import useCustomMediaQuery from "./hooks/custom_media_query";
 import BookDetails from "./components/Books/Details/book-details";
 import ReadBookComponent from "./components/Books/ReadBook/read-book";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   let dispatch = useDispatch();
@@ -26,10 +28,11 @@ const App = () => {
   } = useCustomMediaQuery();
 
   useEffect(() => {
-    // dispatch(fetchProjects());
-    // dispatch(fetchEducation());
-    // dispatch(fetchAwards());
-    // dispatch(fetchExperience());
+    console.log(process.env.REACT_APP_IMAGE_KIT_BASE_URL);
+    dispatch(fetchProjects());
+    dispatch(fetchEducation());
+    dispatch(fetchAwards());
+    dispatch(fetchExperience());
   }, []);
   return (
     <>
@@ -46,6 +49,18 @@ const App = () => {
             ></Route>
             <Route path="*" element={<Home />}></Route>
           </Routes>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
         </Router>
       </PlaybackProvider>
     </>

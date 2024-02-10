@@ -17,7 +17,6 @@ const BookDetailContainer = ({ book }) => {
         borderRadius: "10px",
         flexDirection: "column",
         alignItems: "start",
-        //   justifyContent: "center",
       }}
     >
       <div
@@ -29,7 +28,6 @@ const BookDetailContainer = ({ book }) => {
           display: "flex",
           borderRadius: "10px",
           alignItems: "start",
-          //   justifyContent: "center",
         }}
       >
         <div
@@ -47,7 +45,7 @@ const BookDetailContainer = ({ book }) => {
             gyroscope={true}
           >
             <img
-              src={book.src}
+              src={book.bookCover}
               height="250px"
               width="230px"
               style={{
@@ -80,24 +78,28 @@ const BookDetailContainer = ({ book }) => {
             }}
           >
             {book.title}
-            <span
-              style={{
-                marginLeft: "10px",
-                cursor: "pointer",
-              }}
-            >
-              <a href={book.amazonLink} target="_blank">
-                <img
-                  style={{
-                    boxShadow: "2px 2px 4px #000000",
-                    borderRadius: "50%",
-                  }}
-                  height="30px"
-                  width="30px"
-                  src="/amazon.png"
-                ></img>
-              </a>
-            </span>
+            {book.buyLink ? (
+              <span
+                style={{
+                  marginLeft: "10px",
+                  cursor: "pointer",
+                }}
+              >
+                <a href={book.buyLink} target="_blank">
+                  <img
+                    style={{
+                      boxShadow: "2px 2px 4px #000000",
+                      borderRadius: "50%",
+                    }}
+                    height="30px"
+                    width="30px"
+                    src="/amazon.png"
+                  ></img>
+                </a>
+              </span>
+            ) : (
+              ""
+            )}
           </p>
           <div
             style={{
@@ -106,8 +108,8 @@ const BookDetailContainer = ({ book }) => {
               margin: "10px auto",
             }}
           >
-            {book.categories &&
-              book.categories.map((category) => {
+            {book.genre &&
+              book.genre.map((category) => {
                 return (
                   <p
                     style={{
@@ -143,7 +145,7 @@ const BookDetailContainer = ({ book }) => {
               textShadow: "2px 2px 4px #000000",
             }}
           >
-            {book.description}
+            {book.bookDescription}
           </p>
 
           <div
@@ -159,7 +161,7 @@ const BookDetailContainer = ({ book }) => {
             <BookContainerStats
               icon={"language_japanese_kana"}
               heading={"Language"}
-              statValue={"English"}
+              statValue={book.language}
             />
             <BookContainerStats
               icon={"star"}
@@ -169,7 +171,7 @@ const BookDetailContainer = ({ book }) => {
             <BookContainerStats
               icon={"description"}
               heading={"Pages"}
-              statValue={"200"}
+              statValue={book.pages}
             />
           </div>
           <div
@@ -226,7 +228,7 @@ const BookDetailContainer = ({ book }) => {
               textAlign: "justify",
             }}
           >
-            {book.authorDesc}
+            {book.writerDescription}
           </p>
         </div>
         <div
@@ -246,7 +248,7 @@ const BookDetailContainer = ({ book }) => {
               gyroscope={true}
             >
               <img
-                src={book.authorImg}
+                src={book.writerPic}
                 height="250px"
                 width="230px"
                 style={{
@@ -265,7 +267,7 @@ const BookDetailContainer = ({ book }) => {
                 color: "var(--primary-color)",
               }}
             >
-              {book.author}
+              {book.writerName}
             </div>
           </div>
         </div>

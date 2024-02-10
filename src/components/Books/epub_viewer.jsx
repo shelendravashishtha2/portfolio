@@ -42,7 +42,7 @@ const EpubViewer = ({ epubUrl, onChapterChange }) => {
         console.log(epubUrl);
 
         const loadedBook = ePub(epubUrl);
-        
+
         //   setBook(loadedBook);
         const rendition = loadedBook.renderTo("viewer", {
           width: "100%",
@@ -85,17 +85,18 @@ const EpubViewer = ({ epubUrl, onChapterChange }) => {
   // Helper function to extract information about all pages
   const getAllPages = (rendition) => {
     rendition.book.ready.then(async (book) => {
-      // let locations = await rendition.book.locations.generate();
-      // console.log("Total Pages?: ", locations.length);
-      // console.log(locations);
-      // setLength(locations.length);
-      // setPages(locations);
+      let locations = await rendition.book.locations.generate();
+      console.log("Total Pages?: ", locations.length);
+      console.log(locations);
+      setLength(locations.length);
+      setPages(locations);
       setLoading(false);
     });
 
     // Combine information from manifest and spine
   };
   const showChapter = (index) => {
+    console.log(pages[index]);
     book.display(pages[index]);
   };
   const nextChapter = () => {
@@ -196,13 +197,13 @@ const EpubViewer = ({ epubUrl, onChapterChange }) => {
               aria-label="Temperature"
               defaultValue={30}
               valueLabelDisplay="auto"
-              step={1}
-              marks
+              // step={1}
+              // marks
               getAriaValueText={(e) => e + 1}
               // onChange={() => {
               //   showChapter()
               // }}
-              onChangeCommitted={(e, val) => showChapter(val)}
+              onChange={(e, val) => showChapter(val)}
               min={0}
               max={length}
             />

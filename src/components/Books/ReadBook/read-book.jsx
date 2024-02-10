@@ -1,34 +1,37 @@
 import { useEffect, useState } from "react";
 import EpubViewer from "../epub_viewer";
-import { fireStorage } from "../../../firebase";
+import { useParams } from "react-router-dom";
+import { fireStorage, firestore } from "../../../firebase";
 import { getBytes } from "firebase/storage";
 const ReadBookComponent = () => {
   const [loading, setLoading] = useState(false);
   const [url, setUrl] = useState(null);
+  const params = useParams();
   useEffect(() => {
     setLoading(true);
     try {
-      const storageRef = fireStorage.ref("books/");
-      storageRef
-        .listAll()
-        .then((data) => {
-          console.log(data.items);
-
-          data.items.map(async (item) => {
-            console.log(item);
-            let resp = await getBytes(item);
-            console.log(resp);
-            setUrl(resp);
-            setLoading(false);
-          });
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+      fetchBook(params.id).then(async (book) => {
+        const storageRef = fireStorage.ref(book.book);
+        console.log(storageRef);
+        let resp = await getBytes(storageRef);
+        console.log(resp);
+        setUrl(resp);
+        setLoading(false);
+      });
     } catch (e) {
+      setLoading(false);
       console.log(e);
     }
   }, []);
+
+  const fetchBook = async (id) => {
+    try {
+      let data = await firestore.collection("books").doc(id).get();
+      return data.data();
+    } catch (e) {
+      setLoading(false);
+    }
+  };
   return (
     <>
       {!loading && url ? (
