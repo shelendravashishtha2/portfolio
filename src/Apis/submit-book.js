@@ -28,6 +28,7 @@ export const postEBook = async ({ body, toaster }) => {
       console.log("body.book ", body.book);
     }
     console.log(body);
+    body.createdAt =Date.now();
     body["isVerified"] = false;
     let collectionRef = await firestore.collection("books");
     let getDocId = collectionRef.doc().id;

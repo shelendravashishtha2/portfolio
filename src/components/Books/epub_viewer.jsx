@@ -192,7 +192,6 @@ const EpubViewer = ({ epubUrl, onChapterChange }) => {
               margin: "auto",
             }}
           >
-            {" "}
             <Slider
               aria-label="Temperature"
               defaultValue={30}

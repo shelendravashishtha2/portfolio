@@ -1,0 +1,93 @@
+.book-typ-input {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+.book-typ-input label {
+  margin: 10px 0;
+}
+
+.book-typ-input .error, .error  {
+  font-size: 12px;
+  margin-top: 2px;
+  color: rgb(255, 54, 54);
+}
+
+.book-typ-input input,
+.book-typ-input textarea,
+.book-typ-input .book-input-field {
+  min-height: 50px;
+  background: #29313c;
+  outline: none;
+  border: none;
+  color: #adbac7;
+  font-size: 1.2rem;
+  padding: 5px;
+  border-radius: 5px;
+  resize: none;
+}
+
+.book-typ-input .file-upload {
+  min-height: 40px;
+  background: #29313c !important;
+  outline: none;
+  border: none;
+  color: #adbac7;
+  font-size: 1.1rem;
+  padding: 5px;
+  border-radius: 5px;
+  resize: none;
+}
+.book-typ-input label{
+  color: var(--primary-color);
+}
+
+.book-typ-input label.required::after {
+  content: " *";
+  color: red;
+}
+
+.book-typ-input #link {
+  color: rgb(134, 74, 249);
+}
+
+.book-typ-input .file-info {
+  color: #adbac7;
+  font-size: 9px;
+}
+
+.book-typ-input .book-input-field:hover,
+.book-typ-input .book-input-field:active {
+  background: #29313c;
+  box-shadow: none;
+  outline: none;
+}
+.book-input-field svg {
+  color: #adbac7;
+}
+
+body .MuiMenu-paper {
+  margin-top: 5px;
+  box-shadow: none;
+}
+body .MuiMenu-paper,
+body .MuiMenu-paper li {
+  background: #29313c !important;
+  color: #adbac7;
+}
+
+body .MuiMenu-paper li {
+  transition: "300ms";
+  width: 98%;
+  margin: auto;
+  border-radius: 2px;
+}
+
+body .MuiMenu-paper li:hover {
+  color: #adbac7 !important;
+  background: #2c394b !important;
+}
+
+body .MuiMenu-paper li.Mui-selected {
+  background: var(--intro-canvas) !important;
+}

@@ -15,6 +15,7 @@ import BookDetails from "./components/Books/Details/book-details";
 import ReadBookComponent from "./components/Books/ReadBook/read-book";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PoetryMain from "./components/Poetry/poetry_main";
 
 const App = () => {
   let dispatch = useDispatch();
@@ -47,6 +48,8 @@ const App = () => {
               path="/read-book/:id"
               element={<ReadBookComponent />}
             ></Route>
+            <Route path="/poetry" element={<PoetryMain />}></Route>
+            <Route path="/poetry/:id/:docid" element={<PoetryMain />}></Route>
             <Route path="*" element={<Home />}></Route>
           </Routes>
           <ToastContainer

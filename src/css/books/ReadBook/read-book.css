@@ -6,7 +6,7 @@
   cursor: pointer;
   display: flex;
   justify-content: center;
-  align-items:  center;
+  align-items: center;
   animation: forwardSideIconAnimation 2s ease 0s infinite forwards;
 }
 
@@ -19,5 +19,30 @@
   }
   100% {
     transform: translateX(0px);
+  }
+}
+
+.main-review-book-forward-icon {
+  color: white;
+  padding: 8px;
+  border-radius: 50%;
+  user-select: none;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: upwardSideIconAnimation 2s ease 0s infinite forwards;
+}
+
+@keyframes upwardSideIconAnimation {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
   }
 }

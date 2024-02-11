@@ -43,6 +43,9 @@ const Navbar = () => {
           <div className="link">
             <span onClick={() => navigate("/books")}>Books</span>
           </div>
+          <div className="link">
+            <span onClick={() => navigate("/poetry")}>Poetry</span>
+          </div>
         </div>
         <div className="burger">
           <span className="material-icons">menu</span>

@@ -28,7 +28,11 @@ export const fetchBooksList = () => {
         .then((bookDocs) => {
           const booksList = [];
           bookDocs.docs.forEach((value) => {
-            booksList.push(value.data());
+            let data = value.data();
+            if (data.createdAt) {
+              data.createdAt = data.createdAt.toMillis();
+            }
+            booksList.push(data);
           });
           dispatch(getBooksCreator(booksList));
         });

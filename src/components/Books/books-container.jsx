@@ -11,7 +11,13 @@ const BooksContainer = ({ handleTouch, book }) => {
   }, []);
   return (
     <div data-aos="zoom-in" data-aos-duration="1000" className="tilt-container">
-      <Tilt glareEnable={false} glareColor={"transparent"}>
+      <Tilt
+        tiltMaxAngleX={10}
+        tiltMaxAngleY={10}
+        perspective={800}
+        glareEnable={false}
+        glareColor={"transparent"}
+      >
         <div className="book-card" onClick={handleTouch}>
           <div
             style={{
@@ -22,8 +28,8 @@ const BooksContainer = ({ handleTouch, book }) => {
           >
             <Tilt
               className="parallax-effect-img"
-              tiltMaxAngleX={20}
-              tiltMaxAngleY={20}
+              tiltMaxAngleX={10}
+              tiltMaxAngleY={10}
               perspective={800}
               transitionSpeed={1500}
               gyroscope={true}

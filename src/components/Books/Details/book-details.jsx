@@ -6,7 +6,7 @@ import BookDetailContainer from "./book-detail-container";
 import AuthorDetailContainer from "./author-detail";
 import { firestore } from "../../../firebase";
 import { CircularProgress } from "@mui/joy";
-
+import GenericWriteAReview from "../../Reviews/write-a-review";
 const BookDetails = () => {
   const params = useParams();
   const [book, setBook] = useState({});
@@ -56,7 +56,6 @@ const BookDetails = () => {
       ) : (
         <>
           <BookDetailContainer book={book} />
-          <AuthorDetailContainer />
         </>
       )}
     </>

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import useCustomMediaQuery from "../../hooks/custom_media_query";
 import "../../css/books/books.css";
 import Tilt from "react-parallax-tilt";
+import { CircularProgress } from "@mui/joy";
 import BooksContainer from "./books-container";
 import EpubViewer from "./epub_viewer";
 import SubmitBookDialog from "./submit-book/submit-book-dialog";
@@ -11,6 +12,7 @@ import SubmitBookDialog from "./submit-book/submit-book-dialog";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchBooksList } from "../../redux/book/books/actions";
 import SearchBar from "./searchBar";
+import { fetchPoetriesList } from "../../redux/poetry/actions";
 
 const Books = () => {
   const [isDialogOpened, setIsIsDialogOpened] = useState(false);
@@ -25,7 +27,8 @@ const Books = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchBooksList());
+    console.log(!books, !books.data, books, books.data);
+    if (!books || !books.data || !books.data.length) dispatch(fetchBooksList());
   }, []);
 
   return (
@@ -79,9 +82,25 @@ const Books = () => {
         </div>
       </div>
       <div className="books-content">
-        {books.data.map((book) => (
-          <BooksContainer handleTouch={handleTouch} book={book} />
-        ))}
+        {books.loading ? (
+          <>
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <CircularProgress variant="soft" />
+            </div>
+          </>
+        ) : (
+          books.data.map((book, index) => (
+            <BooksContainer handleTouch={handleTouch} book={book} />
+          ))
+        )}
       </div>
       <div
         className="submit-book"

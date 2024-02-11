@@ -5,7 +5,7 @@ import ModalDialog from "@mui/joy/ModalDialog";
 import MusicPlayer from "./MusicPlayer";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPlaylist } from "../../../redux/book/music/actions";
+import { fetchPlaylist } from "../../../redux/music/actions";
 
 const MusicDialog = ({ isOpen, onClose }) => {
   const cancelRef = useRef();

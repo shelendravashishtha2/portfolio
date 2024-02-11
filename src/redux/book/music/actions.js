@@ -28,7 +28,11 @@ export const fetchPlaylist = () => {
         .then((musicDocs) => {
           const musicPlaylist = [];
           musicDocs.docs.forEach((value) => {
-            musicPlaylist.push(value.data());
+            let data = value.data();
+            if (data.createdAt) {
+              data.createdAt = data.createdAt.toMillis();
+            }
+            musicPlaylist.push(data);
           });
           dispatch(getPlaylistCreator(musicPlaylist));
         });
