@@ -1,150 +1,94 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchBookReviewsList } from "../../redux/book/reviews/actions";
+import { useParams } from "react-router-dom";
+import { Rating } from "@mui/material";
 import { firestore } from "../../firebase";
-import { useNavigate, useParams } from "react-router-dom";
-import { set } from "lodash";
+import "../../css/Reviews/generic-review.css";
 
 const GenericReview = ({ id, isBook }) => {
-  const dispatch = useDispatch();
-  // const reviews = useSelector((state) => state.bookReviews);
   const [reviews, setReviews] = useState([]);
   const params = useParams();
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     setLoading(true);
 
-    if (isBook) {
-      let ref = firestore
-        .collection("books")
-        .doc(params.id)
-        .collection("reviews");
+    const fetchReviews = async () => {
+      let ref;
+      if (isBook) {
+        ref = firestore
+          .collection("books")
+          .doc(params.id)
+          .collection("reviews");
+      } else {
+        ref = firestore
+          .collection("poetry")
+          .doc(params.docid)
+          .collection("reviews");
+      }
+
       ref.onSnapshot((snapshot) => {
         let revArr = snapshot.docs.map((review) => review.data());
-        console.log(revArr);
-
         revArr.sort((a, b) => b.createdAt - a.createdAt);
         setReviews(revArr);
-        console.log(revArr);
         setLoading(false);
       });
-    } else {
-      let ref = firestore
-        .collection("poetry")
-        .doc(params.docid)
-        .collection("reviews");
-      ref.onSnapshot((snapshot) => {
-        let revArr = snapshot.docs.map((review) => review.data());
-        console.log(revArr);
+    };
 
-        revArr.sort((a, b) => b.createdAt - a.createdAt);
-        setReviews(revArr);
-        console.log(revArr);
-        setLoading(false);
-      });
-    }
-    // dispatch(fetchBookReviewsList({ id: book.id }));
-  }, [params]);
+    fetchReviews();
+  }, [params, isBook]);
+
   return (
     <>
-      <p
-        style={{
-          fontFamily: "UnifrakturCook, cursive",
-          textShadow: "2px 2px 4px #000000",
-          fontSize: "2rem",
-          color: "var(--primary-color)",
-          margin: "10px auto",
-        }}
-      >
-        Reviews
-      </p>
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-          justifyContent: "space-around",
-          alignItems: "start",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            width: "30%",
-            justifyContent: "space-around",
-            alignItems: "center",
-          }}
-        >
+      <p className="review-title">Reviews</p>
+      <div className="reviews-container">
+        <div className="review-image-container">
           <img
-            src="/review_image.png"
             style={{
               width: "100%",
               height: "300px",
             }}
+            src="/review_image.png"
           ></img>
-          <div
-            style={{
-              width: "1px",
-              height: "200px",
-              background: "var(--primary-color)",
-            }}
-          ></div>
+          <div className="vertical-line"></div>
         </div>
-        <div
-          style={{
-            width: "68%",
-            minHeight: "200px",
-          }}
-        >
+        <div className="review-list-container">
           {loading ? (
             <>Loading....</>
           ) : !reviews.length ? (
-            <p
-              style={{
-                color: "var(--primary-color)",
-              }}
-            >
+            <p className="no-reviews-message">
               No Reviews Found {reviews.length}
             </p>
           ) : (
-            reviews.map((review) => (
-              <div
-                className="review"
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  background: "#29313c",
-                  borderRadius: "10px",
-                  marginBottom: "10px",
-                }}
-              >
-                <p
-                  style={{
-                    margin: "8px 0 10px 0",
-                    color: "var(--primary-color)",
-                  }}
-                >
+            reviews.map((review, index) => (
+              <div key={index} className="review">
+                <p className="review-text">
+                  <sup>
+                    <img src="/opening_quote.png"></img>
+                  </sup>
                   {review.review}
+                  <sub>
+                    <img src="/closing_quote.png"></img>
+                  </sub>
                 </p>
-                <div
-                  className="review-user-info"
-                  style={{
-                    display: "flex",
-                    color: "#aaa",
-                  }}
-                >
-                  <img
-                    style={{
-                      height: "30px",
-                      width: "30px",
-                      borderRadius: "50%",
-                      // mixBlendMode: "multiply",
-                      marginRight: "10px",
-                    }}
-                    height="50px"
-                    width="50px"
-                    src="/user.jpg"
-                  ></img>
-                  <p>{review.name}</p>
+                <div className="review-user-info">
+                  <div className="user-info">
+                    <img
+                      className="user-avatar"
+                      height="50px"
+                      width="50px"
+                      src="/user.jpg"
+                    ></img>
+                    <p className="user-name">{review.name}</p>
+                  </div>
+                  <div className="review-rating">
+                    <Rating value={review.rating} disabled />
+                  </div>
+                  <div className="review-created-at">
+                    <p>
+                      Created At :{" "}
+                      {new Date(review.createdAt).toLocaleDateString()}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))

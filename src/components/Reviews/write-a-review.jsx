@@ -18,6 +18,7 @@ const GenericWriteAReview = ({ id, isBook }) => {
           left: "50%",
           transform: "translateX(-50%)",
           display: "flex",
+          zIndex: 99999999,
           transition: "1s",
           bottom: open ? "60px" : "-100%",
         }}

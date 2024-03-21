@@ -1,0 +1,94 @@
+.review-title {
+  font-family: UnifrakturCook, cursive;
+  text-shadow: 2px 2px 4px #000000;
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin: 10px auto;
+}
+
+.reviews-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
+}
+
+.review-image-container {
+  display: flex;
+  width: 30%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.vertical-line {
+  width: 1px;
+  height: 200px;
+  background: var(--primary-color);
+}
+
+.review-list-container {
+  width: 68%;
+  min-height: 200px;
+}
+
+.no-reviews-message {
+  color: var(--primary-color);
+}
+
+.review {
+  width: 100%;
+  padding: 10px;
+  background: #29313c;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.review-text {
+  margin: 8px 0 10px 0;
+  color: white;
+}
+
+.review-user-info {
+  display: flex;
+  justify-content: space-between;
+  color: #aaa;
+}
+
+.user-info {
+  display: flex;
+}
+
+.user-avatar {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-name {
+  font-size: 14px;
+}
+
+.review-rating {
+  margin-right: 10px;
+}
+
+.review-created-at {
+  font-size: 10px;
+}
+
+/* Media Query for Tablet Screens */
+@media only screen and (max-width: 768px) {
+  .reviews-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .vertical-line {
+    display: none;
+  }
+
+  .review-image-container,
+  .review-list-container {
+    width: 100%;
+  }
+}

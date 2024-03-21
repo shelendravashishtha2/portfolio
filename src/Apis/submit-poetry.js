@@ -4,7 +4,7 @@ export const postEPoetry = async ({ body, toaster }) => {
   try {
     console.log(body);
     body["isVerified"] = false;
-    body.createdAt =Date.now();
+    body.createdAt = Date.now();
     let collectionRef = await firestore.collection("poetry");
     let getDocId = collectionRef.doc().id;
     body.id = getDocId;

@@ -30,7 +30,7 @@ const RightPanel = ({ poetry }) => {
         <div
           className="poetry-header"
           style={{
-            padding: "10px",
+            padding: "10px  ",
             background: "rgb(33, 42, 54)",
             width: "100%",
             color: "white",
@@ -38,7 +38,14 @@ const RightPanel = ({ poetry }) => {
             marginBottom: "10px",
           }}
         >
-          {poetry.title}
+          <h3
+            style={{
+              marginBottom: "8px",
+            }}
+          >
+            Central Idea
+          </h3>
+          {poetry.poetryDescription}
         </div>
         <div
           className="poetry-header"

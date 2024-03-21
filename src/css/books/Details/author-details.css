@@ -1,0 +1,49 @@
+.about-author-title {
+  font-family: UnifrakturCook, cursive;
+  text-shadow: 2px 2px 4px #000000;
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.author-detail-container {
+  min-height: 300px;
+  width: calc(100% - 20px);
+  display: flex;
+  flex-direction: column-reverse; /* Stack items vertically on small screens */
+  margin-top: 20px;
+}
+
+.author-description {
+  width: 100%; /* Take full width on small screens */
+}
+
+.author-image-container {
+  margin: auto;
+  width: 230px;
+  margin-top: 20px; /* Add some space between image and description */
+}
+
+.author-name {
+  margin: 10px 0;
+  font-family: "";
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+/* Media Query for Tablet and Desktop Screens */
+@media only screen and (min-width: 768px) {
+  .author-detail-container {
+    flex-direction: row; /* Arrange items side by side on larger screens */
+    align-items: start;
+  }
+
+  .author-description {
+    width: calc(
+      100% - 250px
+    ); /* Adjust width for description on larger screens */
+  }
+
+  .author-image-container {
+    margin-top: 0; /* Reset margin */
+  }
+}

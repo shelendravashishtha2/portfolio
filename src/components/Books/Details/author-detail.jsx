@@ -1,35 +1,12 @@
 import Tilt from "react-parallax-tilt";
 import BookSectionSeperator from "./seperator";
-
+import "../../../css/books/Details/author-details.css";
 const AuthorDetailContainer = ({ book }) => {
   return (
     <>
-      <p
-        style={{
-          fontFamily: "UnifrakturCook, cursive",
-          textShadow: "2px 2px 4px #000000",
-          fontSize: "2rem",
-          color: "var(--primary-color)",
-        }}
-      >
-        About Author
-      </p>
-      <div
-        className="book-detail-container"
-        style={{
-          minHeight: "300px",
-          width: "calc(100% - 20px)",
-          display: "flex",
-          marginTop: "20px",
-          justifyContent: "space-between",
-          alignItems: "start",
-        }}
-      >
-        <div
-          style={{
-            width: "calc(100% - 250px)",
-          }}
-        >
+      <p className="about-author-title">About Author</p>
+      <div className="author-detail-container">
+        <div className="author-description">
           <p
             style={{
               color: "#adbac7",
@@ -39,13 +16,7 @@ const AuthorDetailContainer = ({ book }) => {
             {book.writerDescription}
           </p>
         </div>
-        <div
-          style={{
-            height: "250px",
-            width: "230px",
-            float: "end",
-          }}
-        >
+        <div className="author-image-container">
           <div>
             <Tilt
               className="parallax-effect-img"
@@ -62,21 +33,12 @@ const AuthorDetailContainer = ({ book }) => {
                 style={{
                   boxShadow: "rgb(0,0,0,0.5) 0px 5px 15px",
                   borderRadius: "5px",
+                  marginBottom: "10px",
                 }}
                 alt=""
               />
             </Tilt>
-            <div
-              className="author-name"
-              style={{
-                margin: "10px 0",
-                fontFamily: "",
-                fontSize: "1.2rem",
-                color: "var(--primary-color)",
-              }}
-            >
-              {book.writerName}
-            </div>
+            <div className="author-name">{book.writerName}</div>
           </div>
         </div>
       </div>

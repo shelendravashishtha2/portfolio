@@ -6,10 +6,11 @@ import SetSidebarBackground from "./set_background";
 import SetSidebarFontSize from "./set_font_size";
 import SetSidebarTextAlign from "./set_text_align";
 import SetSidebarLineHeight from "./set_line_height";
+
 const ReadBookSidebar = ({ changeEpubConfig }) => {
   const [open, setOpen] = useState(false);
   const [config, setConfig] = useState({
-    color: "#ffffff",
+    color: "#000000",
     background: "#ffffff",
     textAlign: "justify",
     fontSize: "12px",

@@ -22,8 +22,6 @@ const PoetryMain = () => {
     }
   }, []);
 
- 
-
   useEffect(() => {
     console.log(params);
     setSelectedIndex(params.id);
@@ -63,12 +61,14 @@ const PoetryMain = () => {
           className="submit-book"
           style={{
             position: "fixed",
-            height: "50px",
-            width: "50px",
+            // height: "50px",
+            padding: "10px",
+            // width: "50px",
             background: "var(--primary-color)",
             bottom: "10px",
             right: "10px",
-            borderRadius: "50%",
+            borderRadius: "22px",
+            fontWeight: "bold",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -77,7 +77,15 @@ const PoetryMain = () => {
           }}
           onClick={handleDialogToggle}
         >
-          <span class="material-symbols-outlined">flutter_dash</span>{" "}
+          <span
+            style={{
+              margin: "8px",
+            }}
+            class="material-symbols-outlined"
+          >
+            flutter_dash
+          </span>
+          <p>Submit Your Poetry</p>
         </div>
         <SubmitPoetryDialog
           isOpen={isDialogOpened}
